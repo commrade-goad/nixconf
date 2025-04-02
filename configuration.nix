@@ -49,8 +49,9 @@
     # Enable CUPS to print documents.
     services.printing.enable = false;
 
+    hardware.bluetooth.enable = true;
+
     # Enable sound with pipewire.
-    services.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
         enable = true;
@@ -141,16 +142,6 @@
         insertNameservers = ["1.1.1.1" "8.8.8.8" "8.8.4.4"];
     };
     networking.networkmanager.dns = "none";
-
-    # networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-    #
-    # services.resolved = {
-    #     enable = true;
-    #     dnssec = "true";
-    #     domains = [ "~." ];
-    #     fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-    #     dnsovertls = "true";
-    # };
 
     # autodelete some old version
     nix.gc.automatic = true;
