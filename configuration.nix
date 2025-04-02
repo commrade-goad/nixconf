@@ -49,6 +49,43 @@
         alsa.support32Bit = true;
         pulse.enable = true;
         jack.enable = true;
+        configPackages = [
+            (pkgs.writeTextDir "share/pipewire/pipewire.conf.d/99-input-denoising.conf" ''
+context.modules = [
+{   name = libpipewire-module-filter-chain
+    args = {
+        node.description =  "RNN Noise Canceling source"
+        media.name =  "RNN Noise Canceling source"
+        filter.graph = {
+            nodes = [
+                {
+                    type = ladspa
+                    name = rnnoise
+                    plugin = ${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so
+                    label = noise_suppressor_mono
+                    control = {
+                        "VAD Threshold (%)" = 55.0
+                        "VAD Grace Period (ms)" = 500
+                        "Retroactive VAD Grace (ms)" = 0
+                    }
+                }
+            ]
+        }
+        capture.props = {
+            node.name =  "capture.rnnoise_source"
+            node.passive = true
+            audio.rate = 48000
+        }
+        playback.props = {
+            node.name =  "rnnoise_source"
+            media.class = Audio/Source
+            audio.rate = 48000
+        }
+    }
+}
+]
+            '')
+        ];
     };
 
     zramSwap = {
@@ -58,6 +95,7 @@
     };
 
     # == Servies (Systemd stuff is here too) == #
+    systemd.services.NetworkManager-wait-online.enable = false;
     services.xserver.enable = false;
     services.displayManager.sddm.enable = true;
     services.desktopManager.plasma6.enable = true;
@@ -109,6 +147,8 @@
         pkgs.brave
         pkgs.vesktop
         pkgs.pavucontrol
+        pkgs.ripgrep
+        pkgs.rnnoise-plugin
         # pkgs.home-manager
     ];
 
