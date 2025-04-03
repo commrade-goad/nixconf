@@ -46,18 +46,28 @@
         # EDITOR = "emacs";
     };
 
-    home.systemd.user.services = {
-        hyprpolkitagent = {
-            enable = true;
-        };
-    };
-
     home.pointerCursor = {
         gtk.enable = true;
         # x11.enable = true;
         package = pkgs.bibata-cursors;
         name = "Bibata-Modern-Classic";
         size = 24;
+    };
+
+    gtk = {
+        enable = true;
+        theme = {
+            package = pkgs.everforest-gtk-theme;
+            name = "Everforest-Dark-BL-MB";
+        };
+        iconTheme = {
+            name = "Everforest-Dark";
+        };
+
+        font = {
+            name = "DejaVu Sans";
+            size = 10;
+        };
     };
 
     # Let Home Manager install and manage itself.
