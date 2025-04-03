@@ -127,6 +127,10 @@ context.modules = [
 
     # == For Program and stuff == #
     nixpkgs.config.allowUnfree = true;
+
+    programs.nix-ld.enable = true;
+    programs.nix-ld.libraries = with pkgs; [];
+
     programs.zsh.enable = true;
     programs.hyprland.enable = true;
     environment.systemPackages = with pkgs; [
