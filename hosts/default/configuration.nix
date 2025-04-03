@@ -33,6 +33,7 @@
     environment.variables = {
         EDITOR = "nvim";
         MANPAGER = "nvim +Man!";
+        QT_QPA_PLATFORMTHEME = "qt6ct";
     };
     environment.sessionVariables = {
         NIXOS_OZONE_WL = "1";
@@ -186,7 +187,7 @@ context.modules = [
         pkgs.adwaita-icon-theme
         pkgs.bibata-cursors
         pkgs.everforest-gtk-theme
-        # pkgs.home-manager
+        pkgs.home-manager
     ];
 
     # Some programs need SUID wrappers, can be configured further or are
