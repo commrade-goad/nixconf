@@ -10,11 +10,8 @@
     home.stateVersion = "24.11";
 
     home.packages = [
-        # pkgs.hello
+        pkgs.lua-language-server
 
-        # # You can also create simple shell scripts directly inside your
-        # # configuration. For example, this adds a command 'my-hello' to your
-        # # environment:
         # (pkgs.writeShellScriptBin "my-hello" ''
         #   echo "Hello, ${config.home.username}!"
         # '')
@@ -68,6 +65,5 @@
         };
     };
 
-    # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
 }

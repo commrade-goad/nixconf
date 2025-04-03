@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, inputs, ... }:
 
 {
@@ -137,7 +134,9 @@
     nixpkgs.config.allowUnfree = true;
 
     programs.nix-ld.enable = true;
-    programs.nix-ld.libraries = with pkgs; [];
+    programs.nix-ld.libraries = with pkgs; [
+        stdenv.cc.cc
+    ];
 
     programs.zsh.enable = true;
     programs.hyprland.enable = true;
@@ -206,8 +205,8 @@
         pkgs.pamixer
         pkgs.playerctl
         pkgs.yt-dlp
-        pkgs.meson
         pkgs.acpi
+        pkgs.libnotify
     ];
 
     # Some programs need SUID wrappers, can be configured further or are
