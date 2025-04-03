@@ -57,8 +57,7 @@
     gtk = {
         enable = true;
         theme = {
-            package = pkgs.everforest-gtk-theme;
-            name = "Everforest-Dark-BL-MB";
+            name = "Everforest-Dark-BL-LB";
         };
         iconTheme = {
             name = "Everforest-Dark";
