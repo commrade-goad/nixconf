@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs ? {}, ... }:
 
 {
     home.username = "goad";
@@ -11,6 +11,7 @@
 
     home.packages = [
         pkgs.lua-language-server
+        inputs.battrem.packages.${pkgs.system}.default
 
         # (pkgs.writeShellScriptBin "my-hello" ''
         #   echo "Hello, ${config.home.username}!"
