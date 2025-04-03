@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+set -xe
+
 echo -e "Diff :"
 git diff HEAD~
 

@@ -53,39 +53,39 @@
         jack.enable = true;
         configPackages = [
             (pkgs.writeTextDir "share/pipewire/pipewire.conf.d/99-input-denoising.conf" ''
-context.modules = [
-{   name = libpipewire-module-filter-chain
-    args = {
-        node.description =  "RNN Noise Canceling source"
-        media.name =  "RNN Noise Canceling source"
-        filter.graph = {
-            nodes = [
-                {
-                    type = ladspa
-                    name = rnnoise
-                    plugin = ${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so
-                    label = noise_suppressor_mono
-                    control = {
-                        "VAD Threshold (%)" = 55.0
-                        "VAD Grace Period (ms)" = 500
-                        "Retroactive VAD Grace (ms)" = 0
+                context.modules = [
+                {   name = libpipewire-module-filter-chain
+                    args = {
+                        node.description =  "RNN Noise Canceling source"
+                        media.name =  "RNN Noise Canceling source"
+                        filter.graph = {
+                            nodes = [
+                                {
+                                    type = ladspa
+                                    name = rnnoise
+                                    plugin = ${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so
+                                    label = noise_suppressor_mono
+                                    control = {
+                                        "VAD Threshold (%)" = 55.0
+                                        "VAD Grace Period (ms)" = 500
+                                        "Retroactive VAD Grace (ms)" = 0
+                                    }
+                                }
+                            ]
+                        }
+                        capture.props = {
+                            node.name =  "capture.rnnoise_source"
+                            node.passive = true
+                            audio.rate = 48000
+                        }
+                        playback.props = {
+                            node.name =  "rnnoise_source"
+                            media.class = Audio/Source
+                            audio.rate = 48000
+                        }
                     }
                 }
-            ]
-        }
-        capture.props = {
-            node.name =  "capture.rnnoise_source"
-            node.passive = true
-            audio.rate = 48000
-        }
-        playback.props = {
-            node.name =  "rnnoise_source"
-            media.class = Audio/Source
-            audio.rate = 48000
-        }
-    }
-}
-]
+                ]
             '')
         ];
     };
@@ -105,6 +105,14 @@ context.modules = [
     };
     services.printing.enable = false;
     services.libinput.enable = true;
+
+    services.udev.extraRules = ''
+        ACTION=="add", SUBSYSTEM=="block", KERNEL=="sda", RUN+="${pkgs.hdparm}/bin/hdparm -B 127 -S 41 /dev/sda"
+    '';
+    powerManagement.resumeCommands = ''
+        ${pkgs.hdparm}/bin/hdparm -B 127 -S 41 /dev/sda
+    '';
+
     # services.openssh.enable = true;
 
     # == User use ‘passwd’ to set password == #
