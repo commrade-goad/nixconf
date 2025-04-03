@@ -62,7 +62,6 @@
         iconTheme = {
             name = "Everforest-Dark";
         };
-
         font = {
             name = "DejaVu Sans";
             size = 10;

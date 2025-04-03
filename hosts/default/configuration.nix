@@ -152,6 +152,7 @@ context.modules = [
         pkgs.python313Packages.pip
         pkgs.nodejs
         pkgs.mpv
+        pkgs.mpvScripts.mpris
         pkgs.unzip
         pkgs.brave
         pkgs.vesktop
@@ -188,6 +189,13 @@ context.modules = [
         pkgs.bibata-cursors
         pkgs.everforest-gtk-theme
         pkgs.home-manager
+        pkgs.wl-gammactl
+        pkgs.wayland-pipewire-idle-inhibit
+        pkgs.pamixer
+        pkgs.playerctl
+        pkgs.yt-dlp
+        pkgs.meson
+        pkgs.acpi
     ];
 
     # Some programs need SUID wrappers, can be configured further or are
