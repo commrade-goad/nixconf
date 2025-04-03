@@ -1,12 +1,13 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
     imports =
         [ # Include the results of the hardware scan.
             ./hardware-configuration.nix
+            inputs.home-manager.nixosModules.default
         ];
 
     # == Bootloader == #
@@ -97,8 +98,6 @@ context.modules = [
     # == Servies (Systemd stuff is here too) == #
     systemd.services.NetworkManager-wait-online.enable = false;
     services.xserver.enable = false;
-    services.displayManager.sddm.enable = true;
-    services.desktopManager.plasma6.enable = true;
     services.xserver.xkb = {
         layout = "us";
         variant = "";
@@ -117,9 +116,18 @@ context.modules = [
         ];
     };
 
+    # == Home Manager setup == #
+    home-manager = {
+        extraSpecialArgs = { inherit inputs; };
+        users = {
+            "goad" = import ./home.nix;
+        };
+    };
+
     # == For Program and stuff == #
     nixpkgs.config.allowUnfree = true;
     programs.zsh.enable = true;
+    programs.hyprland.enable = true;
     environment.systemPackages = with pkgs; [
         pkgs.tmux
         pkgs.neovim
@@ -149,6 +157,35 @@ context.modules = [
         pkgs.pavucontrol
         pkgs.ripgrep
         pkgs.rnnoise-plugin
+        pkgs.go
+        pkgs.rofi-wayland
+        pkgs.waybar
+        pkgs.swww
+        pkgs.zathura
+        pkgs.dunst
+        pkgs.libsForQt5.qt5ct
+        pkgs.kdePackages.qt6ct
+        pkgs.copyq
+        pkgs.blueman
+        pkgs.brightnessctl
+        pkgs.gimp
+        pkgs.gparted
+        pkgs.hdparm
+        pkgs.hyprlock
+        pkgs.hypridle
+        pkgs.libreoffice-qt6-fresh
+        pkgs.jre_minimal
+        pkgs.networkmanagerapplet
+        pkgs.obs-studio
+        pkgs.hyprpolkitagent
+        pkgs.poppler
+        pkgs.qpwgraph
+        pkgs.unrar
+        pkgs.slurp
+        pkgs.grim
+        pkgs.adwaita-icon-theme
+        pkgs.bibata-cursors
+        pkgs.everforest-gtk-theme
         # pkgs.home-manager
     ];
 
@@ -160,7 +197,12 @@ context.modules = [
     #   enableSSHSupport = true;
     # };
 
-    # == MISC ==
+    # == FONTS == #
+    fonts.packages = with pkgs; [
+        nerd-fonts.iosevka-term
+    ];
+
+    # == MISC == #
     nix.gc.automatic = true;
     nix.gc.dates = "daily";
     nix.gc.options = "--delete-older-than 7d";
