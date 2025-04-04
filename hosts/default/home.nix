@@ -12,6 +12,7 @@
     home.packages = [
         pkgs.lua-language-server
         pkgs.clang-tools
+        pkgs.nil
         pkgs.go
         inputs.battrem.packages.${pkgs.system}.default
 

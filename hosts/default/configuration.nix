@@ -102,6 +102,7 @@
     };
     services.printing.enable = false;
     services.libinput.enable = true;
+    services.fstrim.enable = true;
 
     services.udev.extraRules = ''
         ACTION=="add", SUBSYSTEM=="block", KERNEL=="sda", RUN+="${pkgs.hdparm}/bin/hdparm -B 127 -S 41 /dev/sda"
