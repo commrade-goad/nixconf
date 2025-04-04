@@ -1,0 +1,143 @@
+{
+    "height": 34,
+    "layer": "top",
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-bottom": 0,
+    "margin-right": 0,
+    "position": "top",
+    "spacing": 5,
+    "modules-left": [
+        "hyprland/workspaces"
+        // "hyprland/window",
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "custom/dunst",
+        "idle_inhibitor",
+        "custom/separator",
+        // "network",
+        // "custom/separator",
+        "pulseaudio",
+        "custom/separator",
+        "battery",
+        "custom/separator",
+        "cpu"
+    ],
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "一",
+            "2": "二",
+            "3": "三",
+            "4": "四",
+            "5": "五",
+            "6": "六",
+            "7": "七",
+            "8": "八",
+            "9": "九",
+            "10":"十"
+        },
+        "persistent-workspaces": {
+            "*": [ 1,2,3,4,5,6,7,8,9,10 ]
+        },
+        "disable-scroll": true,
+        "all-outputs": true,
+        "on-click": "activate",
+        "sort-by-number": true
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 65
+    },
+    "tray": {
+        "spacing": 10,
+        "icon-size": 12
+    },
+    "clock": {
+        "format": "{:%R}",
+        // "tooltip-format": "<i>{:%d %B %Y}</i>\n\n<tt>{calendar}</tt>",
+        "tooltip-format": "<i>{:%d %B %Y}</i>",
+        "on-click": "kitty --class calendar-dialog -o initial_window_width=640 -o initial_window_height=480 -e ~/.config/hypr/scripts/calendar.sh",
+        "interval": 30
+    },
+    "cpu": {
+        "interval": 10,
+        "format": "CPU:{usage}%",
+        "max-length": 10,
+        "on-click": "kitty --class rmon-dialog -o initial_window_width=640 -o initial_window_height=480 -e btop",
+    },
+    "memory": {
+        "interval": 30,
+        "format": " {}%",
+        "format-alt": " {used:0.1f}G",
+        "max-length": 10
+    },
+    "network": {
+        "format-wifi": "W",
+        "format-ethernet": "E",
+        "format-disconnected": "!",
+        "tooltip-format": "{ifname}: {gwaddr}({essid}, {signalStrength}%)",
+        "on-click": "kitty --class nmtui-dialog -o initial_window_width=32 -o initial_window_height=32 -e nmtui",
+        "max-length": 5
+    },
+    "pulseaudio": {
+        "format": "VOL:{volume}%",
+        "format-bluetooth": "VOL:{volume}",
+        "format-bluetooth-muted":"VOL: x",
+        "format-muted": "VOL:x{volume}%",
+        "format-icons": {
+            "default": [
+                "󰕾",
+            ]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pamixer -t"
+    },
+    "battery": {
+        "interval": 30,
+        "states": {
+            "warning": 30,
+            "critical": 20
+        },
+        "max-length": 20,
+        "format": "BAT:{capacity}%",
+        "format-charging": "BAT:{capacity}+",
+        "format-plugged": "BAT:{capacity}+",
+        "format-icons": [
+            "󰂎",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ]
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰅶",
+            "deactivated": "󰾪"
+        }
+    },
+    "custom/dunst": {
+        "return-type": "json",
+        "format": "{}",
+        "restart-interval": 1,
+        "exec": "~/.config/hypr/scripts/dunst.sh",
+        "on-click": "dunstctl set-paused toggle",
+        "on-click-right": "~/.config/hypr/scripts/notif-history"
+    },
+
+    "custom/separator": {
+        "format": "::",
+    }
+}

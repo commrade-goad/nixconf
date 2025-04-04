@@ -1,0 +1,14 @@
+/* small server list */
+.guilds_c48ade {
+    width: 0px!important;
+    padding-left: var(--guild-mini)!important;
+}
+.guilds_c48ade:hover {
+    width: var(--guild-max)!important;
+    padding-left: initial!important;
+}
+/* edit it */
+:root {
+    --guild-mini: 24px;
+    --guild-max: 72px; /* normal server list size */
+}

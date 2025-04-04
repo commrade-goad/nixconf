@@ -1,0 +1,190 @@
+* {
+    font-family: "IosevkaTerm Nerd Font Mono, Noto Sans CJK HK";
+    font-size: 14px;
+    font-weight: bold;
+    transition: box-shadow ease-in 0.1s;
+    transition: color ease-in 0.1s;
+    transition: background-color ease-in 0.1s;
+    margin: 0 2px;
+}
+
+window#waybar {
+    background-color: #2D353B;
+    color: #A7C080;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    border-radius: 0px;
+}
+
+#workspace {
+    margin-left: 0;
+}
+
+#tray menu {
+    color: #D3C6AA;
+    background: #2D353B;
+}
+
+#workspaces button {
+    color: #4F585E;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    padding: 0px 4px;
+    border: none;
+}
+
+#workspaces button:hover {
+    color: #D3C6AA;
+    background-color: #2D353B;
+}
+
+#workspaces button.active {
+    color: #A7C080;
+    background-color: #2D353B;
+}
+
+#workspaces button.active:hover {
+    color: #D3C6AA;
+    background-color: #2D353B;
+}
+
+#workspaces button.urgent {
+    color: #D3C6AA;
+    background-color: #E67E80
+}
+
+#window {
+    margin-left: 0;
+    color: #A7C080;
+}
+
+#cpu {
+    padding: 0 2px;
+    padding-right: 5px;
+    color: #A7C080;
+}
+
+#cpu:hover {
+    color: #D3C6AA;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#pulseaudio {
+    padding: 0 2px;
+    color: #A7C080;
+}
+
+#pulseaudio:hover {
+    color: #D3C6AA;
+}
+
+#pulseaudio.muted {
+    color: #E67E80;
+}
+
+#clock {
+    color: #A7C080;
+    padding: 0 2px;
+    padding-left: 5px;
+}
+
+#clock:hover {
+    color: #D3C6AA;
+}
+
+#battery {
+    border-radius: 0;
+    padding: 0 2px;
+    background-color: #2D353B;
+    color: #A7C080;
+}
+
+@keyframes blink {
+    to {
+        background-color: #4F585E;
+        color: #D3C6AA;
+    }
+}
+
+#battery.critical:not(.charging) {
+    color: #E67E80;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network {
+    padding: 0 2px;
+    color: #A7C080;
+}
+
+#network:hover {
+    color: #D3C6AA;
+}
+
+#network.disconnected {
+    color: #E67E80;
+}
+
+#custom-separator {
+    font-size: 10px;
+    color: #7A8478;
+    padding: 0;
+}
+
+#custom-media:hover {
+    color: #D3C6AA;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #E67E80;
+}
+
+#idle_inhibitor {
+    margin: 4px 0;
+    padding: 0 7px;
+    color: #877f6d;
+}
+
+#idle_inhibitor.activated{
+    border-left: 0;
+    border-right: 0;
+    color: #A7C080;
+}
+
+#idle_inhibitor:hover {
+    color: #D3C6AA;
+}
+
+#custom-dunst {
+    margin: 4px 0;
+    padding:0 7px;
+    color: #877f6d;
+}
+
+#custom-dunst.disabled{
+    border-left: 0;
+    border-right: 0;
+    color: #A7C080;
+}
+
+#custom-dunst:hover {
+    color: #D3C6AA;
+}

@@ -14,13 +14,13 @@
         pkgs.lua-language-server
         pkgs.clang-tools
         pkgs.nil
+        pkgs.rust-analyzer
 
         # Lang
         pkgs.go
 
         pkgs.rustc
         pkgs.cargo
-        pkgs.rust-analyzer
         pkgs.rustfmt
         pkgs.clippy
 
