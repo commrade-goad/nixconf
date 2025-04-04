@@ -10,10 +10,21 @@
     home.stateVersion = "24.11";
 
     home.packages = [
+        # LSP
         pkgs.lua-language-server
         pkgs.clang-tools
         pkgs.nil
+
+        # Lang
         pkgs.go
+
+        pkgs.rustc
+        pkgs.cargo
+        pkgs.rust-analyzer
+        pkgs.rustfmt
+        pkgs.clippy
+
+        # Utils
         inputs.battrem.packages.${pkgs.system}.default
 
         # (pkgs.writeShellScriptBin "my-hello" ''

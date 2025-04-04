@@ -118,9 +118,7 @@
         isNormalUser = true;
         description = "goad";
         shell = pkgs.zsh;
-        extraGroups = [ "networkmanager" "wheel" ];
-        packages = with pkgs; [
-        ];
+        extraGroups = [ "networkmanager" "wheel" "input" ];
     };
 
     # == Home Manager setup == #
@@ -142,70 +140,70 @@
     programs.zsh.enable = true;
     programs.hyprland.enable = true;
     environment.systemPackages = with pkgs; [
-        pkgs.tmux
-        pkgs.neovim
-        pkgs.wl-clipboard
-        pkgs.fastfetch
-        pkgs.btop
-        pkgs.fzf
-        pkgs.zoxide
-        pkgs.eza
-        pkgs.man-pages
-        pkgs.zsh
-        pkgs.git
-        pkgs.gcc
-        pkgs.clang
-        pkgs.kitty
-        pkgs.yazi
-        pkgs.cmake
-        pkgs.pkg-config
-        pkgs.python313
-        pkgs.python313Packages.pip
-        pkgs.nodejs
-        pkgs.mpv
-        pkgs.mpvScripts.mpris
-        pkgs.unzip
-        pkgs.brave
-        pkgs.vesktop
-        pkgs.pavucontrol
-        pkgs.ripgrep
-        pkgs.rnnoise-plugin
-        pkgs.rofi-wayland
-        pkgs.waybar
-        pkgs.swww
-        pkgs.zathura
-        pkgs.dunst
-        pkgs.libsForQt5.qt5ct
-        pkgs.kdePackages.qt6ct
-        pkgs.copyq
-        pkgs.blueman
-        pkgs.brightnessctl
-        pkgs.gimp
-        pkgs.gparted
-        pkgs.hdparm
-        pkgs.hyprlock
-        pkgs.hypridle
-        pkgs.libreoffice-qt6-fresh
-        pkgs.jre_minimal
-        pkgs.networkmanagerapplet
-        pkgs.obs-studio
-        pkgs.hyprpolkitagent
-        pkgs.poppler
-        pkgs.qpwgraph
-        pkgs.unrar
-        pkgs.slurp
-        pkgs.grim
-        pkgs.adwaita-icon-theme
-        pkgs.bibata-cursors
-        pkgs.everforest-gtk-theme
-        pkgs.home-manager
-        pkgs.wl-gammactl
-        pkgs.wayland-pipewire-idle-inhibit
-        pkgs.pamixer
-        pkgs.playerctl
-        pkgs.yt-dlp
-        pkgs.acpi
-        pkgs.libnotify
+        tmux
+        neovim
+        wl-clipboard
+        fastfetch
+        btop
+        fzf
+        zoxide
+        eza
+        man-pages
+        zsh
+        git
+        gcc
+        clang
+        kitty
+        yazi
+        cmake
+        pkg-config
+        python313
+        python313Packages.pip
+        nodejs
+        mpv
+        mpvScripts.mpris
+        unzip
+        brave
+        vesktop
+        pavucontrol
+        ripgrep
+        rnnoise-plugin
+        rofi-wayland
+        waybar
+        swww
+        zathura
+        dunst
+        libsForQt5.qt5ct
+        kdePackages.qt6ct
+        copyq
+        blueman
+        brightnessctl
+        gimp
+        gparted
+        hdparm
+        hyprlock
+        hypridle
+        libreoffice-qt6-fresh
+        jre_minimal
+        networkmanagerapplet
+        obs-studio
+        hyprpolkitagent
+        poppler
+        qpwgraph
+        unrar
+        slurp
+        grim
+        adwaita-icon-theme
+        bibata-cursors
+        everforest-gtk-theme
+        home-manager
+        wl-gammactl
+        wayland-pipewire-idle-inhibit
+        pamixer
+        playerctl
+        yt-dlp
+        acpi
+        libnotify
     ];
 
     # Some programs need SUID wrappers, can be configured further or are

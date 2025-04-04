@@ -3,7 +3,7 @@
 set -xe
 
 echo -e "Diff :"
-git diff HEAD~
+git diff HEAD
 
 echo -e "Rebuilding:"
 
