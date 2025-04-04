@@ -205,7 +205,6 @@
         pkgs.yt-dlp
         pkgs.acpi
         pkgs.libnotify
-        pkgs.dbus
     ];
 
     # Some programs need SUID wrappers, can be configured further or are
