@@ -154,7 +154,6 @@
         pkgs.git
         pkgs.gcc
         pkgs.clang
-        pkgs.clang-tools
         pkgs.kitty
         pkgs.yazi
         pkgs.cmake
@@ -170,7 +169,6 @@
         pkgs.pavucontrol
         pkgs.ripgrep
         pkgs.rnnoise-plugin
-        pkgs.go
         pkgs.rofi-wayland
         pkgs.waybar
         pkgs.swww
@@ -207,6 +205,7 @@
         pkgs.yt-dlp
         pkgs.acpi
         pkgs.libnotify
+        pkgs.dbus
     ];
 
     # Some programs need SUID wrappers, can be configured further or are

@@ -11,6 +11,8 @@
 
     home.packages = [
         pkgs.lua-language-server
+        pkgs.clang-tools
+        pkgs.go
         inputs.battrem.packages.${pkgs.system}.default
 
         # (pkgs.writeShellScriptBin "my-hello" ''
