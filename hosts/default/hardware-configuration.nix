@@ -20,9 +20,14 @@
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/C7B3-55D5";
+    { device = "/dev/disk/by-uuid/825E-F714";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
+    };
+
+  fileSystems."/hdd-part" =
+    { device = "/dev/disk/by-uuid/2e455654-87e1-4af6-a812-fa05d28198c1";
+      fsType = "ext4";
     };
 
   swapDevices = [ ];

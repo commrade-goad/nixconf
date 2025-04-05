@@ -10,6 +10,7 @@
     # == Bootloader == #
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
+    boot.kernel.sysctl."kernel.sysrq" = 1;
 
     # == Networking == #
     networking.hostName = "nixos";
@@ -103,6 +104,11 @@
     services.printing.enable = false;
     services.libinput.enable = true;
     services.fstrim.enable = true;
+    services.logind = {
+        extraConfig = ''
+            HandlePowerKey=ignore
+        '';
+    };
 
     services.udev.extraRules = ''
         ACTION=="add", SUBSYSTEM=="block", KERNEL=="sda", RUN+="${pkgs.hdparm}/bin/hdparm -B 127 -S 41 /dev/sda"
@@ -137,6 +143,7 @@
         stdenv.cc.cc
     ];
 
+    # TODO: brave custom flag if possible
     programs.zsh.enable = true;
     programs.hyprland.enable = true;
     environment.systemPackages = with pkgs; [
@@ -204,6 +211,7 @@
         yt-dlp
         acpi
         libnotify
+        xdg-user-dirs
     ];
 
     # Some programs need SUID wrappers, can be configured further or are
