@@ -18,6 +18,7 @@
 
         # Lang
         pkgs.go
+        pkgs.gopls
 
         pkgs.rustc
         pkgs.cargo
