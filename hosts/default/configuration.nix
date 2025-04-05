@@ -212,6 +212,7 @@
         acpi
         libnotify
         xdg-user-dirs
+        inputs.battrem.packages.${pkgs.system}.default
     ];
 
     # Some programs need SUID wrappers, can be configured further or are
@@ -230,7 +231,7 @@
     # == MISC == #
     nix.gc.automatic = true;
     nix.gc.dates = "daily";
-    nix.gc.options = "--delete-older-than 7d";
+    nix.gc.options = "--delete-older-than 3d";
     nix.settings.experimental-features = ["nix-command" "flakes"];
-    system.stateVersion = "25.05";
+    system.stateVersion = "24.11";
 }

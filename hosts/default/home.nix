@@ -1,4 +1,4 @@
-{ config, pkgs, inputs ? {}, ... }:
+{ config, pkgs, ... }:
 
 {
     home.username = "goad";
@@ -15,22 +15,14 @@
         pkgs.clang-tools
         pkgs.nil
         pkgs.rust-analyzer
+        pkgs.gopls
 
         # Lang
         pkgs.go
-        pkgs.gopls
-
         pkgs.rustc
         pkgs.cargo
         pkgs.rustfmt
         pkgs.clippy
-
-        # Utils
-        inputs.battrem.packages.${pkgs.system}.default
-
-        # (pkgs.writeShellScriptBin "my-hello" ''
-        #   echo "Hello, ${config.home.username}!"
-        # '')
     ];
 
     home.file = {
@@ -55,9 +47,7 @@
     #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
     #  /etc/profiles/per-user/goad/etc/profile.d/hm-session-vars.sh
 
-    home.sessionVariables = {
-        # EDITOR = "emacs";
-    };
+    home.sessionVariables = {};
 
     home.pointerCursor = {
         gtk.enable = true;
