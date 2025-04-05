@@ -28,6 +28,7 @@
   fileSystems."/hdd-part" =
     { device = "/dev/disk/by-uuid/2e455654-87e1-4af6-a812-fa05d28198c1";
       fsType = "ext4";
+      options = [ "noatime" "errors=remount-ro" ];
     };
 
   swapDevices = [ ];
