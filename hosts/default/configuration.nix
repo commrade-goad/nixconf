@@ -204,7 +204,6 @@
         unrar
         slurp
         grim
-        adwaita-icon-theme
         bibata-cursors
         everforest-gtk-theme
         home-manager
