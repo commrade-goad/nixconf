@@ -189,7 +189,6 @@
         copyq
         blueman
         brightnessctl
-        gimp
         gparted
         hdparm
         hyprlock
