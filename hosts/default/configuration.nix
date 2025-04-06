@@ -170,7 +170,11 @@
         mpvScripts.mpris
         (mpv.override { scripts = [ mpvScripts.mpris ]; })
         unzip
-        brave
+        (brave.override {
+            commandLineArgs = [
+                "--enable-features=TouchpadOverscrollHistoryNavigation"
+            ];
+        })
         vesktop
         pavucontrol
         ripgrep
