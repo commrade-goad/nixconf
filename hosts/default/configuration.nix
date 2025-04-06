@@ -1,5 +1,8 @@
 { config, pkgs, inputs, ... }:
 
+let
+  mpv-with-mpris = pkgs.mpv.override { scripts = [ pkgs.mpvScripts.mpris ]; };
+in
 {
     imports =
         [
@@ -167,8 +170,8 @@
         python313
         python313Packages.pip
         nodejs
-        mpv
         mpvScripts.mpris
+        mpv-with-mpris
         unzip
         brave
         vesktop
