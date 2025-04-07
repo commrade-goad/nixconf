@@ -123,7 +123,6 @@
     users.users.goad = {
         isNormalUser = true;
         description = "goad";
-        shell = pkgs.zsh;
         extraGroups = [ "networkmanager" "wheel" "input" ];
     };
 
@@ -143,8 +142,6 @@
         stdenv.cc.cc
     ];
 
-    # TODO: brave custom flag if possible
-    programs.zsh.enable = true;
     programs.hyprland.enable = true;
     environment.systemPackages = with pkgs; [
         tmux
@@ -156,7 +153,6 @@
         zoxide
         eza
         man-pages
-        zsh
         git
         gcc
         clang
