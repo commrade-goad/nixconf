@@ -159,9 +159,9 @@
         kitty
         yazi
         cmake
+        gnumake
         pkg-config
         python313
-        python313Packages.pip
         nodejs
         mpvScripts.mpris
         (mpv.override { scripts = [ mpvScripts.mpris ]; })

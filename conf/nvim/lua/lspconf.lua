@@ -28,9 +28,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- use system clangd
-local clangd_path = vim.fn.exepath("clangd");
-if clangd_path then
+local clangd_path = vim.fn.exepath("clangd")
+if clangd_path ~= "" then
     require("lspconfig").clangd.setup({
         cmd = {
             clangd_path,
@@ -43,13 +42,19 @@ if clangd_path then
     })
 end
 
-require("lspconfig").rust_analyzer.setup({
-    capabilities = capabilities
-})
+local rust_an_path = vim.fn.exepath("rust-analyzer")
+if rust_an_path ~= "" then
+    require("lspconfig").rust_analyzer.setup({
+        capabilities = capabilities
+    })
+end
 
-require("lspconfig").nil_ls.setup({
-    capabilities = capabilities
-})
+local pyright_path = vim.fn.exepath("pyright")
+if pyright_path ~= "" then
+    require("lspconfig").pyright.setup({
+        capabilities = capabilities
+    })
+end
 
 require ("lspconfig").lua_ls.setup {
     on_init = function(client)
@@ -93,7 +98,6 @@ cmp.setup({
     snippet = {
         expand = function(args)
             vim.snippet.expand(args.body)
-            -- require('luasnip').lsp_expand(args.body)
         end,
     },
     completion = {
@@ -164,14 +168,6 @@ cmp.setup({
 
 vim.lsp.set_log_level("off")
 
--- The other new stuff (I DONT LIKE THIS ONE WASTE ALOT OF SPACE) --
--- vim.diagnostic.config({
---     virtual_lines = {
---         current_line = true,
---     },
--- })
-
--- The new stuff --
 vim.diagnostic.config({
     virtual_text = { current_line = true }
 })
