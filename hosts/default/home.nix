@@ -13,7 +13,7 @@
         # LSP
         pkgs.lua-language-server
         pkgs.clang-tools
-        pkgs.nil
+        # pkgs.nil # nixos lsp (not really usefull)
         pkgs.rust-analyzer
         pkgs.gopls
 
@@ -23,6 +23,10 @@
         pkgs.cargo
         pkgs.rustfmt
         pkgs.clippy
+
+        # DBG
+        pkgs.gdb
+        pkgs.cgdb
     ];
 
     home.file = {
@@ -70,6 +74,8 @@
             size = 10;
         };
     };
+
+    gtk.gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
     programs.home-manager.enable = true;
 }
