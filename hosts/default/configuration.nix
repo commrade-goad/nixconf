@@ -64,8 +64,8 @@
                                     plugin = ${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so
                                     label = noise_suppressor_mono
                                     control = {
-                                        "VAD Threshold (%)" = 50.0
-                                        "VAD Grace Period (ms)" = 200
+                                        "VAD Threshold (%)" = 60.0
+                                        "VAD Grace Period (ms)" = 300
                                         "Retroactive VAD Grace (ms)" = 0
                                     }
                                 }
@@ -199,7 +199,7 @@
         unrar
         slurp
         grim
-        bibata-cursors
+        whitesur-cursors
         everforest-gtk-theme
         home-manager
         wl-gammactl
