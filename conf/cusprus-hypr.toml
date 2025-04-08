@@ -1,0 +1,33 @@
+prompt_name = "  Master "
+pretty_name = [
+    "⏻ Shutdown",
+    " Reboot",
+    "Z Suspend",
+    " Logout",
+    " Lock",
+    " App",
+    "󰂚 Notifications",
+    " Emoji",
+    "󰎈 Media",
+    "󱄄 Fix Display Color",
+    "󰊖 Toggle Gamemode",
+    # "󰸉 Toggle Live Wallpaper",
+    # "󰐎 Play-Pause Live Wallpaper",
+    "󱊷 Switch esc & caps key"
+]
+command = [
+    "systemctl poweroff",
+    "systemctl reboot",
+    "loginctl lock-session && systemctl suspend",
+    "hyprctl dispatch exit",
+    "loginctl lock-session",
+    "rofi -show drun",
+    "~/.config/hypr/scripts/notif-history",
+    "~/.config/hypr/scripts/emoji.sh",
+    "~/.config/hypr/scripts/toggle_media_play_pause.sh",
+    "~/.config/hypr/scripts/display-color.sh",
+    "~/.config/hypr/scripts/gamemode.sh",
+    # "~/.config/hypr/scripts/livewp.sh",
+    # "~/.config/hypr/scripts/livewp.sh toggle",
+    "~/.config/hypr/scripts/change-caps.sh -r"
+]
