@@ -61,14 +61,14 @@
         "format": "{:%R}",
         // "tooltip-format": "<i>{:%d %B %Y}</i>\n\n<tt>{calendar}</tt>",
         "tooltip-format": "<i>{:%d %B %Y}</i>",
-        "on-click": "kitty --class calendar-dialog -o initial_window_width=640 -o initial_window_height=480 -e ~/.config/hypr/scripts/calendar.sh",
+        "on-click": "foot -a calendar-dialog -w 800x600 -e ~/.config/hypr/scripts/calendar.sh",
         "interval": 30
     },
     "cpu": {
         "interval": 10,
         "format": "CPU:{usage}%",
         "max-length": 10,
-        "on-click": "kitty --class rmon-dialog -o initial_window_width=640 -o initial_window_height=480 -e btop",
+        "on-click": "foot -a rmon-dialog -w 800x600 -e btop",
     },
     "memory": {
         "interval": 30,
@@ -81,7 +81,7 @@
         "format-ethernet": "E",
         "format-disconnected": "!",
         "tooltip-format": "{ifname}: {gwaddr}({essid}, {signalStrength}%)",
-        "on-click": "kitty --class nmtui-dialog -o initial_window_width=32 -o initial_window_height=32 -e nmtui",
+        "on-click": "foot -a nmtui-dialog -w 800x600 -e nmtui",
         "max-length": 5
     },
     "pulseaudio": {
