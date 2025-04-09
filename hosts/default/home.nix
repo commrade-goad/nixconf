@@ -23,6 +23,7 @@
         pkgs.cargo
         pkgs.rustfmt
         pkgs.clippy
+        pkgs.nodejs
 
         # DBG
         pkgs.gdb
