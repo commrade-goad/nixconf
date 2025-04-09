@@ -162,7 +162,6 @@
         gnumake
         pkg-config
         python313
-        nodejs
         mpvScripts.mpris
         (mpv.override { scripts = [ mpvScripts.mpris ]; })
         unzip
