@@ -41,6 +41,7 @@
     time.timeZone = "Asia/Jakarta";
     i18n.defaultLocale = "en_US.UTF-8";
     hardware.bluetooth.enable = true;
+    hardware.bluetooth.powerOnBoot = true;
 
     security.rtkit.enable = true;
     services.pipewire = {
@@ -104,6 +105,7 @@
     services.printing.enable = false;
     services.libinput.enable = true;
     services.fstrim.enable = true;
+    services.blueman.enable = true;
     services.logind = {
         extraConfig = ''
             HandlePowerKey=ignore
@@ -142,6 +144,7 @@
         stdenv.cc.cc
     ];
 
+    programs.firefox.enable = true;
     programs.hyprland.enable = true;
     environment.systemPackages = with pkgs; [
         tmux
@@ -156,7 +159,7 @@
         git
         gcc
         clang
-        kitty
+        foot
         yazi
         cmake
         gnumake
