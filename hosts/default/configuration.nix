@@ -196,7 +196,7 @@
         unrar
         slurp
         grim
-        whitesur-cursors
+        adwaita-icon-theme
         everforest-gtk-theme
         home-manager
         wl-gammactl
@@ -224,9 +224,12 @@
     ];
 
     # == MISC == #
-    nix.gc.automatic = true;
-    nix.gc.dates = "daily";
-    nix.gc.options = "--delete-older-than 3d";
+    nix.optimise.automatic = true;
+    nix.gc = {
+        automatic = true;
+        dates = "daily";
+        options = "--delete-older-than 3d";
+    };
     nix.settings.experimental-features = ["nix-command" "flakes"];
     system.stateVersion = "24.11";
 }

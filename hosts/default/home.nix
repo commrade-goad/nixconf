@@ -57,9 +57,9 @@
     home.pointerCursor = {
         gtk.enable = true;
         # x11.enable = true;
-        package = pkgs.whitesur-cursors;
-        name = "WhiteSur-cursors";
-        size = 32;
+        package = pkgs.adwaita-icon-theme;
+        name = "Adwaita";
+        size = 24;
     };
 
     gtk = {
