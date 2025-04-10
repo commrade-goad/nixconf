@@ -12,30 +12,6 @@ ls.add_snippets("sh", {
     }),
 })
 
-ls.add_snippets("bash", {
-    s("shebang", {
-        t("#!/usr/bin/env bash"),
-        t({ "", "" }),
-        i(0),
-    }),
-})
-
-ls.add_snippets("zsh", {
-    s("shebang", {
-        t("#!/usr/bin/env zsh"),
-        t({ "", "" }),
-        i(0),
-    }),
-})
-
-ls.add_snippets("cpp", {
-    s("uns", {
-        t("using namespace std;"),
-        t({ "", "" }),
-        i(0),
-    }),
-})
-
 ls.add_snippets("all", {
   s("date", {
     f(function()

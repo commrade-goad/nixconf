@@ -1,8 +1,9 @@
 return {
     {"RRethy/base16-nvim",
         config = function ()
-            local custom_color = require('plugconf.custom-color')
-            require('base16-colorscheme').setup(custom_color)
+            -- local custom_color = require('plugconf.custom-color')
+            -- require('base16-colorscheme').setup(custom_color)
+            require('base16-colorscheme').setup()
         end
     },
     {'nvim-telescope/telescope.nvim',

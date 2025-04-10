@@ -5,7 +5,8 @@ local o = vim.o
 local g = vim.g
 g.background = "dark"
 
--- vim.cmd("colorscheme base16-everforest")
+vim.cmd("colorscheme base16-everforest")
+vim.api.nvim_set_hl(0, "TrailingWhitespace", { bg = "#E67E80" })
 
 opt.termguicolors = true
 opt.number = true
