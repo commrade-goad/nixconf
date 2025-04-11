@@ -4,18 +4,15 @@
     home.username = "goad";
     home.homeDirectory = "/home/goad";
 
-    # You should not change this value, even if you update Home Manager. If you do
-    # want to update the value, then make sure to first check the Home Manager
-    # release notes.
     home.stateVersion = "24.11";
 
     home.packages = [
         # LSP
         pkgs.lua-language-server
         pkgs.clang-tools
-        # pkgs.nil # nixos lsp (not really usefull)
         pkgs.rust-analyzer
         pkgs.gopls
+        pkgs.pyright
 
         # Lang
         pkgs.go
@@ -24,6 +21,7 @@
         pkgs.rustfmt
         pkgs.clippy
         pkgs.nodejs
+        pkgs.python313
 
         # DBG
         pkgs.gdb

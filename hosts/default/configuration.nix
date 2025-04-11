@@ -161,10 +161,6 @@
         clang
         foot
         yazi
-        cmake
-        gnumake
-        pkg-config
-        python313
         mpvScripts.mpris
         (mpv.override { scripts = [ mpvScripts.mpris ]; })
         unzip
