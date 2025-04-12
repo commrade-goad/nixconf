@@ -128,13 +128,13 @@
         extraGroups = [ "networkmanager" "wheel" "input" ];
     };
 
-    # == Home Manager setup == #
-    home-manager = {
-        extraSpecialArgs = { inherit inputs; };
-        users = {
-            "goad" = import ./home.nix;
-        };
-    };
+    ## NOTE: Disabled so it didn't tied to system level config.
+    ## home-manager = {
+    ##     extraSpecialArgs = { inherit inputs; };
+    ##     users = {
+    ##         "goad" = import ./home.nix;
+    ##     };
+    ## };
 
     # == For Program and stuff == #
     nixpkgs.config.allowUnfree = true;
@@ -178,7 +178,6 @@
         copyq
         blueman
         brightnessctl
-        gparted
         hdparm
         hyprlock
         hypridle
@@ -188,7 +187,6 @@
         obs-studio
         hyprpolkitagent
         qpwgraph
-        unrar
         slurp
         grim
         adwaita-icon-theme
