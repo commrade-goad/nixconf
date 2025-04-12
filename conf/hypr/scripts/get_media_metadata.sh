@@ -19,7 +19,7 @@ for program in $program_names; do
     title="${title:-Unknown Title}"
     artist="${artist:-Unknown Artist}"
 
-    echo -n "\"$title\" - $artist"
+    echo -n "$title - $artist"
     if [ $first -eq 1 ]; then
         first=0
     else

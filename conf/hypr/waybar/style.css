@@ -1,5 +1,5 @@
 * {
-    font-family: "IosevkaTerm Nerd Font Mono, Noto Sans CJK HK";
+    font-family: "IosevkaTerm Nerd Font, Noto Sans CJK HK";
     font-size: 14px;
     font-weight: bold;
     transition: box-shadow ease-in 0.1s;
@@ -16,10 +16,6 @@ window#waybar {
     border-radius: 0px;
 }
 
-#workspace {
-    margin-left: 0;
-}
-
 #tray menu {
     color: #D3C6AA;
     background: #2D353B;
@@ -27,10 +23,11 @@ window#waybar {
 
 #workspaces button {
     color: #4F585E;
+    background-color: #2D353B;
     border-radius: 0;
-    border-left: 0;
-    border-right: 0;
-    padding: 0px 4px;
+    border: 0;
+    margin: 0px;
+    padding: 0 5px;
     border: none;
 }
 
@@ -41,7 +38,7 @@ window#waybar {
 
 #workspaces button.active {
     color: #A7C080;
-    background-color: #2D353B;
+    background-color: #3D484D;
 }
 
 #workspaces button.active:hover {
@@ -95,7 +92,7 @@ window#waybar {
 #clock {
     color: #A7C080;
     padding: 0 2px;
-    padding-left: 5px;
+    padding-right: 5px;
 }
 
 #clock:hover {
@@ -158,6 +155,7 @@ window#waybar {
 }
 
 #idle_inhibitor {
+    font-size: 10px;
     margin: 4px 0;
     padding: 0 7px;
     color: #877f6d;
@@ -174,6 +172,7 @@ window#waybar {
 }
 
 #custom-dunst {
+    font-size: 10px;
     margin: 4px 0;
     padding:0 7px;
     color: #877f6d;

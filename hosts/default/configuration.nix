@@ -187,7 +187,6 @@
         networkmanagerapplet
         obs-studio
         hyprpolkitagent
-        poppler
         qpwgraph
         unrar
         slurp

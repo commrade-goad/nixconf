@@ -1,6 +1,3 @@
-#!/usr/bin/env bash
-
-# sleep 0.5 && $HOME/Documents/Programming/C/check-lock/check-lock -c
 PRETTY_NAME="caps-lock"
 sleep 0.2
 if [[ $# -gt 0 ]] then
