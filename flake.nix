@@ -29,7 +29,8 @@
             pkgs = nixpkgs.legacyPackages.x86_64-linux;
             extraSpecialArgs = { inherit inputs; };
             modules = [
-                ./hosts/default/home.nix
+                # ./hosts/default/home.nix
+                ./user/goad/home.nix
             ];
         };
     };

@@ -22,6 +22,8 @@
         pkgs.clippy
         pkgs.nodejs
         pkgs.python313
+        pkgs.gcc
+        # pkgs.clang
 
         # DBG
         pkgs.gdb

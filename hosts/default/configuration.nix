@@ -17,7 +17,6 @@
     # Open ports in the firewall.
     # networking.firewall.allowedTCPPorts = [ ... ];
     # networking.firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
     networking.firewall.enable = true;
     networking.networkmanager = {
         enable = true;
@@ -119,22 +118,12 @@
         ${pkgs.hdparm}/bin/hdparm -B 127 -S 41 /dev/sda
     '';
 
-    # services.openssh.enable = true;
-
     # == User use ‘passwd’ to set password == #
     users.users.goad = {
         isNormalUser = true;
         description = "goad";
         extraGroups = [ "networkmanager" "wheel" "input" ];
     };
-
-    ## NOTE: Disabled so it didn't tied to system level config.
-    ## home-manager = {
-    ##     extraSpecialArgs = { inherit inputs; };
-    ##     users = {
-    ##         "goad" = import ./home.nix;
-    ##     };
-    ## };
 
     # == For Program and stuff == #
     nixpkgs.config.allowUnfree = true;
@@ -154,11 +143,8 @@
         btop
         fzf
         zoxide
-        eza
         man-pages
         git
-        gcc
-        clang
         foot
         yazi
         mpvScripts.mpris
