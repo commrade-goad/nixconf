@@ -28,6 +28,12 @@
         # DBG
         pkgs.gdb
         pkgs.cgdb
+
+        # MISC PKGS
+        pkgs.libsixel
+        pkgs.obs-studio
+        pkgs.unzip
+        pkgs.vesktop
     ];
 
     home.file = {

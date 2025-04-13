@@ -149,8 +149,6 @@
         yazi
         mpvScripts.mpris
         (mpv.override { scripts = [ mpvScripts.mpris ]; })
-        unzip
-        vesktop
         pavucontrol
         ripgrep
         rnnoise-plugin
@@ -168,9 +166,7 @@
         hyprlock
         hypridle
         libreoffice-qt6-fresh
-        jre_minimal
         networkmanagerapplet
-        obs-studio
         hyprpolkitagent
         qpwgraph
         slurp
