@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
 nix flake update
-sudo nixos-rebuild switch --upgrade --flake ./#default
+echo -e " :: Done. Please run rebuild-sys.sh and rebuild-home.sh"
