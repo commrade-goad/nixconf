@@ -125,14 +125,14 @@ in {
         mpvScripts.mpris
         (mpv.override { scripts = [ mpvScripts.mpris ]; })
         ripgrep
+        fzf
+        chafa
         wmenu
         swaybg
         dunst
-        # copyq ?? replace with heather stuff cclip
         brightnessctl
         swaylock
         swayidle
-        # hyprpolkitagent ?? polkit stuff later on
         slurp
         grim
         adwaita-icon-theme
