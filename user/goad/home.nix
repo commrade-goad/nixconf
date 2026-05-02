@@ -10,24 +10,12 @@
         # LSP
         pkgs.lua-language-server
         pkgs.clang-tools
-        # pkgs.rust-analyzer
-        # pkgs.gopls
-        # pkgs.pyright
 
-        # Lang
-        # pkgs.go
-        # pkgs.rustc
-        # pkgs.cargo
-        # pkgs.rustfmt
-        # pkgs.clippy
-        # pkgs.nodejs
         pkgs.python313
         pkgs.gcc
-        # pkgs.clang
 
         # DBG
         pkgs.gdb
-        # pkgs.cgdb ?? replace with gf2 later
 
         # MISC PKGS
         pkgs.unzip
