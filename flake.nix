@@ -3,16 +3,23 @@
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+	nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        # battrem = {
-        #     url = "github:commrade-goad/battrem";
-        #     inputs.nixpkgs.follows = "nixpkgs";
-        # };
+        pipemixer = {
+            url = "github:commrade-goad/pipemixer";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        cclip = {
+            url = "github:commrade-goad/cclip";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
     };
 
     outputs = { self, nixpkgs, ... }@inputs: {

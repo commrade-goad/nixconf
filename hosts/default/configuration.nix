@@ -1,6 +1,11 @@
 { config, pkgs, inputs, ... }:
 
-{
+let
+    pkgsUnstable = import inputs.nixpkgs-unstable {
+        system = pkgs.system;
+        config.allowUnfree = true;
+    };
+in {
     imports =
         [
             ./hardware-configuration.nix
@@ -30,7 +35,7 @@
     environment.variables = {
         EDITOR = "nvim";
         MANPAGER = "nvim +Man!";
-        QT_QPA_PLATFORMTHEME = "qt6ct";
+        # QT_QPA_PLATFORMTHEME = "qt6ct";
     };
     environment.sessionVariables = {
         NIXOS_OZONE_WL = "1";
@@ -64,7 +69,7 @@
 	    enable = true;
 	    touchpad = {
 		    accelProfile = "flat";
-		    accelSpeed = 0.3;
+		    accelSpeed = 0.1;
 		    tapping = true;
 		    naturalScrolling = true;
 		    tappingDragLock = false;
@@ -109,7 +114,7 @@
     programs.firefox.enable = true;
     environment.systemPackages = with pkgs; [
         tmux
-        neovim
+        pkgsUnstable.neovim
         wl-clipboard
         fastfetch
         btop
@@ -119,15 +124,14 @@
         # yazi ?? replace with your file manager of chooice later
         mpvScripts.mpris
         (mpv.override { scripts = [ mpvScripts.mpris ]; })
-        # pavucontrol ??? use pipemixer
         ripgrep
-	wmenu
-	swaybg
+        wmenu
+        swaybg
         dunst
         # copyq ?? replace with heather stuff cclip
         brightnessctl
-	swaylock
-	swayidle
+        swaylock
+        swayidle
         # hyprpolkitagent ?? polkit stuff later on
         slurp
         grim
@@ -138,6 +142,8 @@
         playerctl
         libnotify
         xdg-user-dirs
+        inputs.pipemixer.packages.${pkgs.system}.default
+        inputs.cclip.packages.${pkgs.system}.default
     ];
 
     # Some programs need SUID wrappers, can be configured further or are
