@@ -7,18 +7,11 @@
     home.stateVersion = "25.11";
 
     home.packages = [
-        # LSP
-        pkgs.lua-language-server
-        pkgs.clang-tools
-
         pkgs.python313
         pkgs.gcc
-
-        # DBG
         pkgs.gdb
-
-        # MISC PKGS
         pkgs.unzip
+        pkgs.emacs-gtk
     ];
 
     home.file = {
