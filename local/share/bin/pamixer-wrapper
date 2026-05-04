@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+
+amount=2
+mode=$1
+sink="@DEFAULT_AUDIO_SINK@"
+
+getvol() {
+    wpctl get-volume "$sink" | awk '{print int($2*100)}'
+}
+
+if [ "$mode" = "raise" ]; then
+    wpctl set-volume "$sink" ${amount}%+
+    notify-send -t 500 "Volume $(getvol)%"
+
+elif [ "$mode" = "lower" ]; then
+    wpctl set-volume "$sink" ${amount}%-
+    notify-send -t 500 "Volume $(getvol)%"
+
+elif [ "$mode" = "toggle" ]; then
+    wpctl set-mute "$sink" toggle
+
+    muted=$(wpctl get-volume "$sink" | grep -c MUTED)
+
+    if [ "$muted" -eq 1 ]; then
+        notify-send -t 500 "Vol: Muted"
+    else
+        notify-send -t 500 "Vol: Unmuted"
+    fi
+fi

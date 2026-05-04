@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=MVI - Image viewer using mpv
+Exec=mvi %U
+MimeType=image/png;image/jpeg;image/webp;

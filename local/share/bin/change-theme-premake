@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+WALLPATH="$HOME/Pictures/wallpaper"
+
+call() {
+    "$HOME/.local/share/tmg/premake.sh" "$1" "$2"
+}
+
+# chafa_wrapper() {
+#     chafa \
+#         --format sixel \
+#         --align center \
+#         --scale max \
+#         --passthrough none \
+#         --view-size "${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}"
+# }
+
+# preview_file() {
+#     file="$1"
+#     mime=$(file --mime-type -b "$file")
+
+#     case "$mime" in
+#         image/*)
+#             cat "$file" | chafa_wrapper
+#             ;;
+#         *)
+#             echo "No preview available for $mime"
+#             ;;
+#     esac
+# }
+
+# export -f chafa_wrapper preview_file
+
+# WALLPAPER=$(find "$WALLPATH" -type f | fzf \
+#     --ignore-case \
+#     --no-multi \
+#     --preview 'preview_file {}' \
+#     --preview-window=wrap)
+
+WALLPAPER=$(find "$WALLPATH" -type f | tmenu)
+
+if [ -z "$WALLPAPER" ]; then
+    exit
+fi
+
+
+read -p "Theme name : " theme_name
+call "$(realpath "$WALLPAPER")" "$theme_name"

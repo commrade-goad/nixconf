@@ -1,0 +1,235 @@
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term foot
+set $menu wmenu-run
+
+set $wmenu_args -f "CodeNewRoman Nerd Font Mono 11" -N $woh_base -n $woh_text -S $woh_accent -s $woh_base
+set $wmenu_command wmenu-run $wmenu_args
+set $menu $wmenu_command
+set $wallpaper_path "/home/goad/wp.png"
+set $screenlock swaylock -f -i $wallpaper_path -s fill
+
+workspace 10 output HDMI-A-1
+workspace 9 output HDMI-A-1
+
+seat seat0 xcursor_theme Adwaita 24
+
+output eDP-1 allow_tearing yes
+output eDP-1 max_render_time off
+output * adaptive_sync on
+output * bg $wallpaper_path fill
+
+### Input configuration
+input "type:keyboard" {
+	xkb_layout "us"
+	repeat_delay 250
+	repeat_rate 35
+}
+
+input "type:pointer" {
+    accel_profile flat
+    pointer_accel 0.0
+}
+
+input "type:touchpad" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+    pointer_accel 0.1
+    drag_lock disabled
+}
+
+exec wayland-pipewire-idle-inhibit
+exec dunst
+exec swayidle -w          before-sleep 'playerctl pause'         before-sleep '$screenlock'         timeout 300 '$screenlock'          timeout 360 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'          timeout 420 'systemctl suspend'
+exec cclipd -s 2   -t "image/png"   -t "image/*"   -t "text/plain;charset=utf-8"   -t "text/plain"   -t "text/*"
+
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+q kill
+bindsym $mod+p exec $menu
+floating_modifier $mod normal
+bindsym $mod+Shift+r reload
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+# Or use $mod+[up|down|left|right]
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# Ditto, with arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+# You can "split" the current object of your focus with
+# $mod+b or $mod+v, for horizontal and vertical splits
+# respectively.
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space input type:keyboard xkb_switch_layout next
+bindsym $mod+a focus parent
+
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
+bindsym $mod+Ctrl+s exec grim -g "$(slurp)"
+bindsym $mod+Period exec ~/.local/share/bin/swaymoji $wmenu_args
+bindsym $mod+Shift+w sticky toggle
+bindsym $mod+Shift+v exec foot --app-id=dialog -- ccpick
+
+bindsym --locked XF86AudioMute exec pamixer-wrapper toggle 
+bindsym --locked XF86AudioLowerVolume exec pamixer-wrapper lower
+bindsym --locked XF86AudioRaiseVolume exec pamixer-wrapper raise
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym --locked XF86MonBrightnessDown exec brightnessctl-wrapper lower
+bindsym --locked XF86MonBrightnessUp exec brightnessctl-wrapper raise
+bindsym --release Print exec "grim - | wl-copy"
+bindsym --release $mod+Print exec "grim"
+bindsym --locked $mod+Shift+p exec playerctl play-pause
+bindsym --to-code $mod+x mode $master
+
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+set $master "[s]leep,[p]oweroff,[r]eboot,[l]ogout,l[o]ck"
+mode "$master" {
+    bindsym s exec $screenlock && loginctl suspend, mode "default"
+    bindsym p exec loginctl poweroff, mode "default"
+    bindsym r exec loginctl reboot, mode "default"
+    bindsym l exec swaymsg exit
+    bindsym o exec $screenlock, mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+x mode "default"
+}
+
+bindgesture swipe:right workspace prev
+bindgesture swipe:left workspace next
+bindgesture swipe:3:up scratchpad show
+bindgesture swipe:3:down move scratchpad
+
+default_border pixel 2
+gaps inner 0
+
+for_window [class=.*] inhibit_idle fullscreen
+for_window [app_id=.*] inhibit_idle fullscreen
+for_window [app_id=dialog] floating enable
+for_window [class="qBittorrent" window_role="pop-up"] floating enable
+for_window [class="mtp-ng-qt" window_role="Open"] floating enable
+for_window [class=".*.exe"] floating enable, max_render_time off
+for_window [class="Steam"] floating enable, max_render_time off
+for_window [class="firefox"] max_render_time off
+for_window [app_id="firefox"] max_render_time off
+for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, sticky enable
+for_window [app_id="mpv"] inhibit_idle visible, max_render_time off, floating enable
+for_window [title="Firefox.*Sharing Indicator"] floating enable, move position 1600 0, border none, nofocus
+for_window [title="^Library$" app_id="firefox.*"] floating enable
+for_window [urgent="latest" app_id="firefox.*"] focus
+for_window [app_id="xdg-desktop-portal-gtk" title=".*"] floating enable
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable
+for_window [title="Choose Files"] floating enable
+
+focus_follows_mouse always
+
+set $woh_red       B24B46
+set $woh_accent    B3A57F
+set $woh_text      E0E0E0
+set $woh_overlay1  A8A8A8
+set $woh_overlay0  1A1A1A
+set $woh_base      0D0D0D
+
+set $red       #B24B46
+set $accent    #B3A57F
+set $text      #E0E0E0
+set $overlay1  #A8A8A8
+set $overlay0  #1A1A1A
+set $base      #0D0D0D
+
+bar {
+    position top
+    height 24
+    # separator_symbol " | "
+
+    workspace_min_width 28
+    # pango_markup enabled
+    status_command "dwm-bar"
+    colors {
+        background         $base
+        statusline         $text
+        inactive_workspace $base      $base      $overlay1
+        focused_workspace  $accent    $accent    $base
+        urgent_workspace   $red       $red       $base
+        binding_mode       $accent    $accent    $base
+    }
+}
+
+client.focused           $accent      $base $text       $accent     $accent
+client.focused_inactive  $overlay1    $base $overlay1   $overlay1   $overlay1
+client.unfocused         $overlay0    $base $overlay0   $overlay0   $overlay0
+client.urgent            $red         $base $red        $red        $red
+client.placeholder       $overlay0    $base $text       $overlay0   $overlay0
+client.background        $base
+
+font pango:CodeNewRoman Nerd Font Mono 11
+
+include /etc/sway/config.d/*
