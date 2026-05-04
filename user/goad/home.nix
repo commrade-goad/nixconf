@@ -12,6 +12,7 @@
         pkgs.gdb
         pkgs.unzip
         pkgs.emacs-gtk
+        pkgs.direnv
     ];
 
     home.file = {
